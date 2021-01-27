@@ -1,6 +1,6 @@
 # Change this function
 def my_palindrome():
-    return ''
+    return 'tacocat'
 
 # Do not change the main method
 def main():
@@ -13,3 +13,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
