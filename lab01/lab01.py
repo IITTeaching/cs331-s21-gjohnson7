@@ -3,6 +3,7 @@ import sys
 from contextlib import contextmanager
 from io import StringIO
 
+
 #################################################################################
 # TESTING OUTPUTS
 #################################################################################
@@ -16,13 +17,23 @@ def captured_output():
     finally:
         sys.stdout, sys.stderr = old_out, old_err
 
+
 #################################################################################
 # EXERCISE 1
 #################################################################################
 
 # implement this function
 def is_perfect(n):
+    total = 0
+    for x in range(1, n):
+        if n % x == 0:
+            total += x
+    if total == n:
+        return True
+    else:
+        return False
     pass
+
 
 # (3 points)
 def test1():
@@ -34,13 +45,20 @@ def test1():
     for n in range(30, 450):
         tc.assertFalse(is_perfect(n), '{} should not be perfect'.format(n))
 
+
 #################################################################################
 # EXERCISE 2
 #################################################################################
 
 # implement this function
 def multiples_of_3_and_5(n):
+    total_sum = 0
+    for i in range(1, n):
+        if i % 3 == 0 or i % 5 == 0:
+            total_sum = total_sum + i
+    return total_sum
     pass
+
 
 # (3 points)
 def test2():
@@ -49,11 +67,27 @@ def test2():
     tc.assertEqual(multiples_of_3_and_5(500), 57918)
     tc.assertEqual(multiples_of_3_and_5(1000), 233168)
 
+
 #################################################################################
 # EXERCISE 3
 #################################################################################
 def integer_right_triangles(p):
+    store = []
+    if p % 2 != 0:
+        return 0
+    else:
+        count = 0
+        for b in range(1, p // 2):
+            a = p / 2 * ((p - 2 * b) / (p - b))
+            inta = int(a)
+            if a == inta:
+                ab = tuple(sorted((inta, b)))
+                if ab not in store:
+                    count += 1
+                    store.append(ab)
+        return count
     pass
+
 
 def test3():
     tc = unittest.TestCase()
@@ -61,41 +95,63 @@ def test3():
     tc.assertEqual(integer_right_triangles(100), 0)
     tc.assertEqual(integer_right_triangles(180), 3)
 
+
 #################################################################################
 # EXERCISE 4
 #################################################################################
 
 # implement this function
 def gen_pattern(chars):
+    bef = ''
+    aft = ''
+    final = ''
+    line = ''
+    length = len(chars)
+    for char in chars[::-1]:
+        temp = [bef, char, aft]
+        if char == chars[len(chars) - 1]:
+            line = char
+        else:
+            line = '.'.join(temp)
+        bef = line[:int(len(line) / 2) + 1]
+        aft = bef[::-1]
+        line = line.center((length * 2 + length + 1), '.')
+        final += line + '\n'
+    final = final.rstrip('\n')
+    lines = final.split('\n')
+    for i in range((length - 2), -1, -1):
+        final = final + '\n' + lines[i].rstrip('\n')
+    return final
     pass
+
 
 def test4():
     tc = unittest.TestCase()
-    with captured_output() as (out,err):
+    with captured_output() as (out, err):
         gen_pattern('@')
         tc.assertEqual(out.getvalue().strip(), '@')
-    with captured_output() as (out,err):
+    with captured_output() as (out, err):
         gen_pattern('@%')
         tc.assertEqual(out.getvalue().strip(),
-        """
+                       """
 ..%..
 %.@.%
 ..%..
 """.strip())
-    with captured_output() as (out,err):
+    with captured_output() as (out, err):
         gen_pattern('ABC')
         tc.assertEqual(out.getvalue().strip(),
-        """
+                       """
 ....C....
 ..C.B.C..
 C.B.A.B.C
 ..C.B.C..
 ....C....
 """.strip())
-    with captured_output() as (out,err):
+    with captured_output() as (out, err):
         gen_pattern('#####')
         tc.assertEqual(out.getvalue().strip(),
-                             """
+                       """
 ........#........
 ......#.#.#......
 ....#.#.#.#.#....
@@ -106,10 +162,10 @@ C.B.A.B.C
 ......#.#.#......
 ........#........
 """.strip())
-    with captured_output() as (out,err):
+    with captured_output() as (out, err):
         gen_pattern('abcdefghijklmnop')
         tc.assertEqual(out.getvalue().strip(),
-"""
+                       """
 ..............................p..............................
 ............................p.o.p............................
 ..........................p.o.n.o.p..........................
@@ -142,16 +198,18 @@ p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p
 ............................p.o.p............................
 ..............................p..............................
 """.strip()
-)
+                       )
+
 
 #################################################################################
 # RUN ALL TESTS
 #################################################################################
 def main():
-    test1()
-    test2()
-    test3()
+    #test1()
+    #test2()
+    #test3()
     test4()
+
 
 if __name__ == '__main__':
     main()
