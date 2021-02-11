@@ -28,17 +28,35 @@ ROMEO_SOLILOQUY = """
         O, that I were a glove upon that hand,
         that I might touch that cheek!"""
 
+
 ################################################################################
 # EXERCISE 1
 ################################################################################
 # Implement this function
 def compute_ngrams(toks, n=2):
-    """Returns an n-gram dictionary based on the provided list of tokens."""
-    pass
+    lst = []
+    grams = {}
+    for i in range(len(toks) - n + 1):
+        l = []
+        for x in range(n):
+            l.append(toks[i + x])
+        lst.append(l)
+    for tup in lst:
+        key = tup[0]
+        tup2 = tuple(tup[1:])
+        if key not in grams.keys():
+            grams[key] = []
+        grams[key].append(tup2)
+    return grams
+
+
+pass
+
 
 def test1():
     test1_1()
     test1_2()
+
 
 # 20 Points
 def test1_1():
@@ -64,6 +82,7 @@ def test1_1():
                     ('is', 'my', 'love!'),
                     ('were', 'not', 'night.')])
 
+
 # 30 Points
 def test1_2():
     """Test your code on Peter Pan."""
@@ -88,12 +107,28 @@ def test1_2():
     tc.assertEqual(len(dct['wendy']), 202)
     tc.assertEqual(len(dct['peter']), 243)
 
+
 ################################################################################
 # EXERCISE 2
 ################################################################################
 # Implement this function
 def gen_passage(ngram_dict, length=100):
+    currentTok = random.choice(sorted(ngram_dict.keys()))
+    passage = currentTok[:]
+    count = 1
+    while count < length:
+        tup = random.choice(ngram_dict[currentTok])
+        for word in tup:
+            passage += " " + word
+        count += len(tup)
+        currentTok = tup[-1]
+        if currentTok not in ngram_dict.keys():
+            currentTok = random.choice(sorted(ngram_dict.keys()))
+            passage += " " + currentTok
+            count += 1
+    return passage
     pass
+
 
 # 50 Points
 def test2():
@@ -109,9 +144,11 @@ def test2():
     tc.assertEqual(gen_passage(compute_ngrams(romeo_toks), 10),
                    'too bold, \'tis not night. see, how she leans her')
 
+
 def main():
     test1()
     test2()
+
 
 if __name__ == '__main__':
     main()
