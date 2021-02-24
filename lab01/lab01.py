@@ -102,26 +102,22 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-    bef = ''
-    aft = ''
-    final = ''
-    line = ''
-    length = len(chars)
-    for char in chars[::-1]:
-        temp = [bef, char, aft]
-        if char == chars[len(chars) - 1]:
-            line = char
-        else:
-            line = '.'.join(temp)
-        bef = line[:int(len(line) / 2) + 1]
-        aft = bef[::-1]
-        line = line.center((length * 2 + length + 1), '.')
-        final += line + '\n'
-    final = final.rstrip('\n')
-    lines = final.split('\n')
-    for i in range((length - 2), -1, -1):
-        final = final + '\n' + lines[i].rstrip('\n')
-    return final
+    maxchars = len(chars) * 2 - 1
+
+    def ques(a, b):
+        a = "".join(reversed(a))[:b]
+        s = a + "".join(reversed(a))[1:]
+        return s
+
+    maxlen = len('.'.join(ques(chars, len(chars))))
+    for i in range(1, int(maxchars / 2 + 1)):
+        c = ques(chars, i)
+        d = '.'.join(c).center(maxlen, '.')
+        print(d)
+    for i in range(int(maxchars / 2 + 1), 0, -1):
+        c = ques(chars, i)
+        d = ".".join(c).center(maxlen, ".")
+        print(d)
     pass
 
 
@@ -205,9 +201,9 @@ p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p
 # RUN ALL TESTS
 #################################################################################
 def main():
-    #test1()
-    #test2()
-    #test3()
+    test1()
+    test2()
+    test3()
     test4()
 
 
