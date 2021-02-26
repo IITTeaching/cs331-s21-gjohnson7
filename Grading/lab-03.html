@@ -1,0 +1,144 @@
+
+<html>
+  <head>
+    <title>Lab 03 - Graded Solution</title>
+  </head>
+  <body>
+    <h1>Lab 03 - Graded Solution</h1>
+    <p><b>You scored 12% = 0.36 points for this lab.</b></p>
+    <ul>
+      <li><b>Sort ints</b>
+      <ul>
+      <li>Grade Percentage: 6</li>
+      <li>Your solution succeeded taking 0.157 sec</Li>
+      </ul>
+      </li>
+      <li><b>Sort strings based on their last character</b>
+      <ul>
+      <li>Grade Percentage: 6</li>
+      <li>Your solution failed this test case! taking 0.145 sec</Li>
+<li><pre>AssertionError: Expected ['zasa', 'abcd', 'aacz'] but got ['aacz', 'abcd', 'zasa']</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpqinjy6zy/lab03-test.py", line 22, in test1_2
+    assertEquals(sortedstrs, [ 'zasa', 'abcd', 'aacz' ])
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/assertions.py", line 29, in assertEquals
+    raise AssertionError(message)
+AssertionError: Expected ['zasa', 'abcd', 'aacz'] but got ['aacz', 'abcd', 'zasa']
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Sort students on their GPA</b>
+      <ul>
+      <li>Grade Percentage: 6</li>
+      <li>Your solution failed this test case! taking 0.153 sec</Li>
+<li><pre>TypeError: '>' not supported between instances of 'Student' and 'Student'</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp9w3hcgjx/lab03-test.py", line 30, in test1_3
+    sortedstudents = m.module.mysort(students, lambda x,y: 0 if x.gpa == y.gpa else (-1 if x.gpa < y.gpa else 1))
+  File "<tested-program>", line 25, in mysort
+TypeError: '>' not supported between instances of 'Student' and 'Student'
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Binary search for ints</b>
+      <ul>
+      <li>Grade Percentage: 6</li>
+      <li>Your solution succeeded taking 0.149 sec</Li>
+      </ul>
+      </li>
+      <li><b>Binary search for students by GPA</b>
+      <ul>
+      <li>Grade Percentage: 6</li>
+      <li>Your solution failed this test case! taking 0.156 sec</Li>
+<li><pre>TypeError: '>' not supported between instances of 'Student' and 'Student'</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpicqp0r75/lab03-test.py", line 54, in test1_5
+    sortedstudents = m.module.mysort(students, stcmp)
+  File "<tested-program>", line 25, in mysort
+TypeError: '>' not supported between instances of 'Student' and 'Student'
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Search for substrings in hello world</b>
+      <ul>
+      <li>Grade Percentage: 15</li>
+      <li>Your solution failed this test case! taking 0.151 sec</Li>
+<li><pre>TypeError: 'int' object is not iterable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmp27ef1d03/lab03-test.py", line 63, in test2_1
+    p = m.module.PrefixSearcher("Hello World!", 1)
+  File "<tested-program>", line 161, in __init__
+TypeError: 'int' object is not iterable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Search for substrings in Moby Dick</b>
+      <ul>
+      <li>Grade Percentage: 15</li>
+      <li>Your solution failed this test case! taking 1.222 sec</Li>
+<li><pre>TypeError: 'int' object is not iterable</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpgj_xhxpq/lab03-test.py", line 81, in test2_2
+    p = m.module.PrefixSearcher(md_text[0:1000],4)
+  File "<tested-program>", line 161, in __init__
+TypeError: 'int' object is not iterable
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Search for substrings in hello world using suffix array</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 0.135 sec</Li>
+<li><pre>TypeError: mysort() missing 1 required positional argument: 'compare'</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpc1dbuipa/lab03-test.py", line 89, in test3_1
+    s = m.module.SuffixArray("Hello World!")
+  File "<tested-program>", line 225, in __init__
+TypeError: mysort() missing 1 required positional argument: 'compare'
+</pre></li>
+      </ul>
+      </li>
+      <li><b>Search for substrings in Moby Dick using suffix array</b>
+      <ul>
+      <li>Grade Percentage: 20</li>
+      <li>Your solution failed this test case! taking 1.306 sec</Li>
+<li><pre>TypeError: mysort() missing 1 required positional argument: 'compare'</pre></li>
+<li><pre>Traceback (most recent call last):
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/execution_base.py", line 60, in call_test_function
+    test_function(
+  File "/Users/lord_pretzel/.pyenv/versions/3.9.0/lib/python3.9/site-packages/grader-0.0.1-py3.9.egg/grader/core.py", line 48, in wrapper
+    result = test_function(module, *args, **kwargs)
+  File "/var/folders/f7/xnz8v_b13td37s3k4w8t5j2h0000gn/T/tmpeftdxeiu/lab03-test.py", line 104, in test3_2
+    s = m.module.SuffixArray(md_text[0:1000])
+  File "<tested-program>", line 225, in __init__
+TypeError: mysort() missing 1 required positional argument: 'compare'
+</pre></li>
+      </ul>
+      </li>
+    </ul>
+  </body>
+</html>
